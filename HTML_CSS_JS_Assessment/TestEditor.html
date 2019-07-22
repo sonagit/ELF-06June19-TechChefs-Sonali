@@ -1,0 +1,50 @@
+<html>
+<head> 
+	<title>TestEditor</title>  
+	<link rel="stylesheet" type="text/css" href="./style.css">
+ 
+</head>
+<BODY>
+<script>
+function showCorrectAnswer() {
+	document.getElementById("editSection").style.display = "none";
+  document.getElementById("correctSection").style.display = "table-row";
+	document.getElementById("showCorrectBtn").style.display = "none";
+	document.getElementById("hideCorrectBtn").style.display = "inline";
+	submitTryit("2", 0);
+  if (window.editor2) {
+    window.editor2.refresh();
+  }
+}
+function submitTryit(n, cc) {
+	  if (window.editor) {
+	    window.editor.save();
+	  }
+	  var text = document.getElementById("textareaCode" + n).value;
+	  var ifr = document.createElement("iframe");
+	  ifr.setAttribute("frameborder", "0");
+	  ifr.setAttribute("id", "iframeResult" + n);  
+	  document.getElementById("iframewrapper" + n).innerHTML = "";
+	  document.getElementById("iframewrapper" + n).appendChild(ifr);
+	  var ifrw = (ifr.contentWindow) ? ifr.contentWindow : (ifr.contentDocument.document) ? ifr.contentDocument.document : ifr.contentDocument;
+	  if (cc == 1) {
+	      document.getElementById("iframeResult").addEventListener("load", checkReq);
+	  }
+	  ifrw.document.open();
+	  ifrw.document.write(text);  
+	  ifrw.document.close();
+	}
+
+</script>
+<table>
+<tr> <td> Enter Code </td>
+	 <td> <button class="w3-btn w3-right" type="button" onclick="submitTryit('', 1);snhb.startAuction(['try_it_leaderboard']);">Check Your Code &raquo;</button>
+	 </td>
+</tr>
+<tr> <td> <textarea style="width:100%;height:95%;border:1px solid #d3d3d3;" autocomplete="off" id="textareaCode" wrap="logical">
+      </textarea></td>
+      <td> <div id="iframewrapper"></div> </td>
+      </tr>
+</table>
+</BODY>
+</html>
