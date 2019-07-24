@@ -1,0 +1,36 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<!-- A simple bean definition -->
+	<bean id="messageBean"
+		class="com.techchefs.springcore.beans.MessageBean">
+		<property name="message" value="Welcome to spring!!"></property>
+	</bean>
+
+	<!-- <bean id="empInfoBean" class="com.techchefs.springcore.beans.EmployeeInfoBean" 
+		scope="prototype"> <property name="name" value="Ankur Gupta"></property> 
+		<property name="deptBean" ref="departmentBean"></property> </bean> -->
+
+	<bean id="empInfoBean"
+		class="com.techchefs.springcore.beans.EmployeeInfoBean"
+		scope="prototype" autowire="byType">
+		<property name="name" value="Ankur Gupta"></property>
+	</bean>
+
+	<bean id="departmentBean"
+		class="com.techchefs.springcore.beans.DepartmentBean"
+		scope="prototype" autowire-candidate="false">
+		<property name="deptId" value="101"></property>
+		<property name="deptName" value="IT"></property>
+	</bean>
+	<bean id="d2"
+		class="com.techchefs.springcore.beans.DepartmentBean"
+		scope="prototype" autowire-candidate="true">
+		<property name="deptId" value="102"></property>
+		<property name="deptName" value="HR"></property>
+	</bean>
+</beans>
