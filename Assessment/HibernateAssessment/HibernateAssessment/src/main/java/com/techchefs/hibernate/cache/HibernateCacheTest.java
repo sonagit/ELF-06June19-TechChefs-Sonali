@@ -11,7 +11,7 @@ public class HibernateCacheTest {
 	public static void main(String[] args) {
 		// 1. Load the config file
 		Configuration configuration = new Configuration();
-		configuration.configure("com/tc/hibernateApp/cache/hibernate.cache.cfg.xml");
+		configuration.configure("com/tecchefs/hibernate/cache/hibernate.cache.cfg.xml");
 		configuration.addAnnotatedClass(NewEmployeeInfoBean.class);
 
 		// 2. Build the SessionFactory
