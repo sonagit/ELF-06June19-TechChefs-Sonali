@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+<script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+
+<head>
+    <title>MyFirstReactApp</title>
+</head>
+
+<body>
+    <div id="myDiv1"> </div>
+    <div id="myDiv2"> </div>
+    <script type="text/babel">
+    class SnowHello extends React.Component {
+        constructor(props){
+            super(props);
+            console.log('test', props.text);
+            this.state = {
+                display: props.text != undefined ? props.text : "What is your name"
+            };
+        }
+        render(){
+            return <h1> Hello there, This is Snow!!!  {this.state.display} </h1>
+        }
+    }
+    function greet() {
+            var name = document.getElementById("sname");
+            ReactDOM.render(<Submit text={name.value}/>, document.getElementById('myDiv2'))
+    }
+    class Submit extends React.Component {
+        constructor(props){
+            super(props);
+            console.log('test', props.text);
+            this.state = {
+                display: props.text != undefined ? props.text : "!!!!"
+            };
+        }
+        render(){
+            return <h1> Hello  {this.state.display} </h1>
+        }
+    }
+    ReactDOM.render(<SnowHello />, document.getElementById('myDiv1'))
+    </script>
+    Name : <input type="text" id="sname" value="Hello">
+    <input type="Submit" onclick="greet()" />
+</body>
+
+</html>
